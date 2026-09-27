@@ -10,6 +10,7 @@ load_dotenv()
 # You can pass the key explicitly via google_api_key=... or rely on GOOGLE_API_KEY env var
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
+   # model="gemini-3.8-flash",
     temperature=0.2,
     max_tokens=None,
     timeout=None,
