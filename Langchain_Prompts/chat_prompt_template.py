@@ -1,3 +1,6 @@
+#Example of Chat Prompt Template. Instead of using the SystemMessage and HumanMessage, we are using the Tuples of system and human.
+#This is used to give the multiple Chat template.
+
 from langchain_core.prompts import ChatPromptTemplate
 
 chat_template = ChatPromptTemplate([

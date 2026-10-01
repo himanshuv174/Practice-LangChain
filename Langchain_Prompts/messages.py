@@ -1,3 +1,5 @@
+# for the understanding of SystemMessage, HumanMessage, AIMessage message types.
+# It will create a AI Message.
 
 import os
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
@@ -25,4 +27,5 @@ result = model.invoke(messages)
 messages.append(AIMessage(content=result.content))
 
 print(messages)
+#print(messages.content)
 

@@ -1,3 +1,4 @@
+# An interactive Chatbot in the which lives in a CLI, and stores all the converstion of the Human and AI.
 
 import os
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
@@ -17,6 +18,7 @@ model = ChatHuggingFace(llm=llm)
 
 chat_history = [
     SystemMessage(content='You are a helpful AI assistant')
+    #SystemMessage(content='chat_history.txt')
 ]
 
 while True:
