@@ -52,7 +52,7 @@ Review by Anshu
 """)
 
 # print(result['name'])
-print(result)
+print(result.summary)
 # print(result['summary'])
 
 ######################################################################

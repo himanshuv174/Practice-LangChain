@@ -1,21 +1,27 @@
 # We are giving a reviews to our Chat Model and asking him to give us a summary and the sentiment of that review in a structured format using a TypedDict Dictionary.
 
 import os
-from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
+#from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
+from langchain_ollama import ChatOllama
 # from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from typing import TypedDict, Annotated, Optional, Literal
 
 load_dotenv()
 
-llm = HuggingFaceEndpoint(
-    repo_id = "Qwen/Qwen2.5-72B-Instruct",  # Choose any supported HF model
-    task = 'text-generation',
-    huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN"),
-)
+# llm = HuggingFaceEndpoint(
+#     # repo_id = "Qwen/Qwen2.5-72B-Instruct",  # Choose any supported HF model
+#     repo_id = "google/gemma-2-2b-it",  # Choose any supported HF model
+#     task = 'text-generation',
+#     huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN"),
+# )
 # model = ChatOpenAI()
 
-model = ChatHuggingFace(llm = llm)
+# model = ChatHuggingFace(llm = llm)
+
+# 1. Initialize the local Ollama chat model
+# Temperature 0 is recommended for consistent structured output
+model = ChatOllama(model="llama3.2", temperature=0)
 
 # schema of the output data format
 # Giving the annotated of the variable with a small description.
