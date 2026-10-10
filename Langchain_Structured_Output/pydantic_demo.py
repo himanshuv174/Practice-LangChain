@@ -1,3 +1,5 @@
+#Learning how to use pydantic in the output standardization
+
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 

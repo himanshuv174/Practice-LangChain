@@ -1,30 +1,22 @@
 #Using the Pydantic BaseModel Object to get the structured output
 
-import os
-#from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
-# from langchain_openai import ChatOpenAI
+
 from dotenv import load_dotenv
-from typing import TypedDict, Annotated, Optional, Literal
+from typing import Optional, Literal
 from pydantic import BaseModel, Field
+#from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from langchain_ollama import ChatOllama
 
 load_dotenv()
 
 # llm = HuggingFaceEndpoint(
-#     repo_id = "Qwen/Qwen2.5-72B-Instruct",  # Choose any supported HF model
-#     task = 'text-generation',
-#     huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN"),
+#     repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+#     task="text-generation"
 # )
-# model = ChatOpenAI()
-#model = ChatHuggingFace(llm = llm)
+
+# model = ChatHuggingFace(llm=llm)
 
 model = ChatOllama(model="llama3.2", temperature=0)
-
-# schema of the output data format
-# Giving the annotated of the variable with a small description.
-# Optional defines for the optional variable in the output.
-# Literals are used to give few values, it can return. It will not return the value that are not present in Literals.
-
 # schema
 class Review(BaseModel):
 
@@ -35,11 +27,8 @@ class Review(BaseModel):
     cons: Optional[list[str]] = Field(default=None, description="Write down all the cons inside a list")
     name: Optional[str] = Field(default=None, description="Write the name of the reviewer")
     
-# structured_model = model.with_structured_output(Review)  #giving the schema of the output in the form of a class to with_structured_output function.
 
-structured_model = model.with_structured_output(Review, method="json_schema")
-
-# structured_model = model.with_structured_output(Review, method="json_schema", include_raw=False)
+structured_model = model.with_structured_output(Review)
 
 result = structured_model.invoke("""I recently upgraded to the Samsung Galaxy S24 Ultra, and I must say, it’s an absolute powerhouse! The Snapdragon 8 Gen 3 processor makes everything lightning fast—whether I’m gaming, multitasking, or editing photos. The 5000mAh battery easily lasts a full day even with heavy use, and the 45W fast charging is a lifesaver.
 
@@ -57,9 +46,3 @@ Review by Anshu
 """)
 
 print(result)
-#print(result.summary)
-
-
-######################################################################
-# Output looks like 
-
