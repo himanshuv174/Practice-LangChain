@@ -2,16 +2,21 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
+from langchain_ollama import ChatOllama
 
 load_dotenv()
 
-# Define the model
-llm = HuggingFaceEndpoint(
-    repo_id="google/gemma-2-2b-it",
-    task="text-generation"
-)
 
-model = ChatHuggingFace(llm=llm)
+# model = ChatOpenAI()
+model = ChatOllama(model="llama3.2", temperature=0.7)
+
+# # Define the model
+# llm = HuggingFaceEndpoint(
+#     repo_id="google/gemma-2-2b-it",
+#     task="text-generation"
+# )
+
+# model = ChatHuggingFace(llm=llm)
 
 schema = [
     ResponseSchema(name='fact_1', description='Fact 1 about the topic'),
