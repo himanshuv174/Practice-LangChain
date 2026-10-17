@@ -31,3 +31,7 @@ scikit-learn
 #Pydamtic
 pydantic
 pydantic[email]
+
+
+#For Graphical Reprsentation
+grandalf

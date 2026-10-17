@@ -1,7 +1,8 @@
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_ollama import ChatOllama
 
 load_dotenv()
 
@@ -15,7 +16,8 @@ prompt2 = PromptTemplate(
     input_variables=['text']
 )
 
-model = ChatOpenAI()
+# model = ChatOpenAI()
+model = ChatOllama(model="llama3.2", temperature=0.2)
 
 parser = StrOutputParser()
 

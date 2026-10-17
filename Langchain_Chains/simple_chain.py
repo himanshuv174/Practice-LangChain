@@ -1,8 +1,10 @@
-from langchain_openai import ChatOpenAI
+# Creating a Chain and printing the Chain in the console
+
+# from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-
+from langchain_ollama import ChatOllama
 load_dotenv()
 
 prompt = PromptTemplate(
@@ -10,7 +12,8 @@ prompt = PromptTemplate(
     input_variables=['topic']
 )
 
-model = ChatOpenAI()
+model = ChatOllama(model="llama3.2", temperature=0.2)
+# model = ChatOpenAI()
 
 parser = StrOutputParser()
 
