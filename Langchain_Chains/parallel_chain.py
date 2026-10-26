@@ -45,7 +45,7 @@ Support vector machines (SVMs) are a set of supervised learning methods used for
 
 The advantages of support vector machines are:
 
-Effective in high dimensional spaces.
+Effective in high dimensional spacees.
 
 Still effective in cases where number of dimensions is greater than the number of samples.
 
